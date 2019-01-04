@@ -1,0 +1,10 @@
+#map {
+  width: 100%;
+  background: $gray;
+}
+
+@media screen and (max-width: $breakpoint) {
+  #map {
+    height: calc(100vh - #{$nav-height});
+  }
+}

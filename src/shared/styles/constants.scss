@@ -1,0 +1,14 @@
+// Neutrals
+$gray: #999;
+$light-gray: lighten($gray, 30%);
+$border: rgba(0, 0, 0, 0.1);
+$shadow: rgba(0, 0, 0, 0.15);
+$shade: rgba(0, 0, 0, 0.4);
+
+// Colors
+$primary: #3b78e7;
+$light-primary: lighten($primary, 5%);
+
+// Sizes
+$breakpoint: 848px;
+$nav-height: 47.19px;
