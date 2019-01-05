@@ -11,7 +11,7 @@ function loadHospitals() {
   console.log('Loading hospitals to the database'); // eslint-disable-line no-console
 
   Object.keys(hospitals).map(key => (
-    new Hospital(hospitals[key])
+    new Hospital(Object.assign({}, hospitals[key], { code: key }))
       .save()
       .then(console.log) // eslint-disable-line
       .catch(console.log) // eslint-disable-line
