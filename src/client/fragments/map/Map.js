@@ -3,8 +3,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
+import { getHospitals } from '../../actions/hospitalActions';
+import { BLUE } from '../../constants/colors';
+
 const MILES_TO_METERS = 1609.34;
-const BLUE = '#3b78e7';
 
 class Map extends Component {
   constructor(props) {
@@ -13,8 +15,6 @@ class Map extends Component {
     this.state = {
       map: null,
       marker: null,
-      pending: true,
-      error: '',
     };
 
     this.initMap = this.initMap.bind(this);
@@ -25,12 +25,11 @@ class Map extends Component {
     this.radiusChanged = this.radiusChanged.bind(this);
     this.drawRadius = this.drawRadius.bind(this);
     this.renderHospitals = this.renderHospitals.bind(this);
+    this.loadHospitals = this.loadHospitals.bind(this);
   }
 
   componentDidMount() {
     this.waitForGoogle();
-
-    // TODO pull hospital data
   }
 
   componentDidUpdate(prevProps) {
@@ -44,6 +43,12 @@ class Map extends Component {
       map.panTo(location);
     } else if (this.radiusChanged(prevProps)) {
       this.drawRadius();
+    }
+
+    const { hospitalsState } = this.props;
+    if (!hospitalsState || !hospitalsState.hospitals) return;
+    if (!prevProps.hospitalsState || !prevProps.hospitalsState.hospitals) {
+      this.renderHospitals();
     }
   }
 
@@ -86,6 +91,7 @@ class Map extends Component {
 
     const { radiusType, location, radius } = this.props;
     const { map } = this.state;
+
     if (radiusType === 'Local' && map) {
       const newRadiusCircle = new google.maps.Circle({
         strokeColor: BLUE,
@@ -115,6 +121,9 @@ class Map extends Component {
     return false;
   }
 
+  /**
+   * Busy wait for 'google' to be imported from the google maps script
+   */
   waitForGoogle() {
     if (typeof google !== 'undefined') {
       this.initMap();
@@ -143,24 +152,30 @@ class Map extends Component {
       zoom: 8,
     });
 
-    const geocoder= new google.maps.Geocoder();
+    const geocoder = new google.maps.Geocoder();
 
     this.setState({
       map,
       geocoder,
     }, () => {
       this.setMarker();
-      this.renderHospitals();
+      this.loadHospitals();
     });
+  }
+
+  loadHospitals() {
+    const { getHospitalsDispatch } = this.props;
+    getHospitalsDispatch();
   }
 
   renderHospitals() {
     const hospitalMarkers = {};
     const { geocoder } = this.state;
+    const { hospitalsState } = this.props;
+    const { hospitals } = hospitalsState;
 
-    Object.keys(hospitals).forEach((key) => {
-      const hospital = hospitals[key];
-      const { address } = hospital;
+    hospitals.forEach((hospital) => {
+      const { address, code } = hospital;
       const icon = {
         url: 'http://maps.google.com/mapfiles/ms/icons/blue-dot.png',
       };
@@ -168,17 +183,17 @@ class Map extends Component {
       const { createMarker } = this;
 
       const awaitMarker = new Promise((resolve, reject) => {
-        if (hospital.location) {
+        if (hospital.location) { /* If the hospital already has a location */
           resolve(createMarker({
             location: hospital.location,
             icon,
           }));
-        } else {
+        } else { /* If there is no location */
           geocoder.geocode({ address }, (results, status) => {
             if (status === google.maps.GeocoderStatus.OK) {
               const { location } = results[0].geometry;
 
-              console.log(key, location.lat(), location.lng());
+              console.log(code, location.lat(), location.lng()); // eslint-disable-line
 
               resolve(createMarker({
                 location,
@@ -192,13 +207,13 @@ class Map extends Component {
       });
 
       awaitMarker.then((marker) => {
-        hospitalMarkers[key] = marker;
+        hospitalMarkers[code] = marker;
 
         (function(marker) { // eslint-disable-line
           google.maps.event.addListener(marker, 'click', function() { // eslint-disable-line
-            console.log(key);
+            console.log(code); // eslint-disable-line
           });
-        })(hospitalMarkers[key]);
+        })(hospitalMarkers[code]);
       });
     });
 
@@ -212,13 +227,18 @@ class Map extends Component {
   }
 }
 
-function mapStateToProps({ locationState, mapState }) {
+function mapStateToProps({ locationState, mapState, hospitalsState }) {
   return {
     location: locationState,
     radius: mapState.radius,
     radiusType: mapState.radiusType,
+    hospitalsState,
   };
 }
+
+const mapDispatchToProps = dispatch => ({
+  getHospitalsDispatch: () => dispatch(getHospitals()),
+});
 
 Map.propTypes = {
   location: PropTypes.shape({
@@ -228,8 +248,11 @@ Map.propTypes = {
   }).isRequired,
   radius: PropTypes.number.isRequired,
   radiusType: PropTypes.string.isRequired,
+  getHospitalsDispatch: PropTypes.func.isRequired,
+  hospitalsState: PropTypes.object.isRequired, // eslint-disable-line
 };
 
 export default connect(
   mapStateToProps,
+  mapDispatchToProps,
 )(Map);

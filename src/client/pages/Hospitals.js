@@ -4,6 +4,8 @@ import { connect } from 'react-redux';
 
 import { getHospitals } from '../actions/hospitalActions';
 
+// TODO split into more components
+
 class HospitalsClass extends Component {
   componentDidMount() {
     const { getHospitalsDispatch } = this.props;
@@ -17,7 +19,7 @@ class HospitalsClass extends Component {
       error,
     } = this.props;
 
-    // TODO LOADING
+    // TODO LOADING COMPONENT
     if (pending) {
       return (
         <div>
@@ -91,7 +93,7 @@ HospitalsClass.propTypes = {
 const mapStateToProps = ({ hospitalsState }) => hospitalsState;
 
 const mapDispatchToProps = dispatch => ({
-  getHospitalsDispatch: venueId => dispatch(getHospitals(venueId)),
+  getHospitalsDispatch: () => dispatch(getHospitals()),
 });
 
 // Redux config

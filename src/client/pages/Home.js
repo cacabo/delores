@@ -1,5 +1,7 @@
 import React from 'react';
 
 export const Home = () => (
-  <p>This is the homepage</p>
+  <div className="container">
+    <p>This is the homepage</p>
+  </div>
 );
