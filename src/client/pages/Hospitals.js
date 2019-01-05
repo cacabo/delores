@@ -40,6 +40,7 @@ class HospitalsClass extends Component {
         <thead>
           <tr>
             <th scope="col">#</th>
+            <th scope="col">Code</th>
             <th scope="col">Name</th>
             <th scope="col">State</th>
             <th scope="col">Address</th>
@@ -51,14 +52,16 @@ class HospitalsClass extends Component {
         <tbody>
           {hospitals.map(({
             name,
+            code,
             state,
             address,
             location,
           }, idx) => {
             const { lat, lng } = location;
             return (
-              <tr key={name}>
+              <tr key={code}>
                 <td>{idx + 1}</td>
+                <td>{code}</td>
                 <td>{name}</td>
                 <td>{state}</td>
                 <td>{address}</td>

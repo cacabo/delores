@@ -7,8 +7,8 @@ import {
   changeRadius,
 } from '../../actions/mapActions';
 
-import Radios from '../forms/Radios';
-import Slider from '../forms/Slider';
+import Radios from '../../components/forms/Radios';
+import Slider from '../../components/forms/Slider';
 
 const options = [
   'Local',
@@ -25,42 +25,43 @@ class RadiusSelect extends Component {
   }
 
   handleChange(event) {
-    this.props.changeRadiusType(event.target.value);
+    const { dispatchChangeRadiusType } = this.props;
+    dispatchChangeRadiusType(event.target.value);
   }
 
   handleChangeSlider(event) {
     const valueStr = event.target.value;
     const valueNum = parseInt(valueStr, 10);
-
-    this.props.changeRadius(valueNum);
+    const { dispatchChangeRadius } = this.props;
+    dispatchChangeRadius(valueNum);
   }
 
   render() {
+    const { radius, radiusType } = this.props;
+
     return (
       <div>
         <Radios
           label="Radius"
           options={options}
-          value={this.props.radiusType}
+          value={radiusType}
           handleChange={this.handleChange}
           inline
         />
 
-        {
-          this.props.radiusType === options[0] && (
-            <Slider
-              label="Local radius distance (mi)"
-              low={0}
-              high={100}
-              showBounds
-              showValue
-              value={this.props.radius}
-              handleChange={this.handleChangeSlider}
-            />
-          )
-        }
+        {radiusType === options[0] && (
+          <Slider
+            label="Local radius distance (mi)"
+            low={0}
+            high={100}
+            showBounds
+            showValue
+            value={radius}
+            handleChange={this.handleChangeSlider}
+          />
+        )}
       </div>
-    )
+    );
   }
 }
 
@@ -73,18 +74,19 @@ function mapStateToProps({ mapState }) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    changeRadiusType: (radiusType) => dispatch(changeRadiusType(radiusType)),
-    changeRadius: (radius) => dispatch(changeRadius(radius)),
+    dispatchChangeRadiusType: radiusType => dispatch(changeRadiusType(radiusType)),
+    dispatchChangeRadius: radius => dispatch(changeRadius(radius)),
   };
-};
+}
 
 RadiusSelect.propTypes = {
   radius: PropTypes.number.isRequired,
   radiusType: PropTypes.oneOf(options).isRequired,
-  changeRadiusType: PropTypes.func.isRequired,
+  dispatchChangeRadius: PropTypes.func.isRequired,
+  dispatchChangeRadiusType: PropTypes.func.isRequired,
 };
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
+  mapDispatchToProps,
 )(RadiusSelect);

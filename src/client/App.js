@@ -1,7 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
-import Nav from './components/sidebar/Nav';
+import Nav from './fragments/nav/Nav';
 import {
   Home,
   App,

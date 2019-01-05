@@ -1,7 +1,7 @@
 import React from 'react';
-import Map from '../components/map/Map';
-import Sidebar from '../components/sidebar/Sidebar';
-import Shade from '../components/sidebar/Shade';
+import Map from '../fragments/map/Map';
+import Sidebar from '../fragments/sidebar/Sidebar';
+import Shade from '../fragments/sidebar/Shade';
 
 export const App = () => (
   <>
