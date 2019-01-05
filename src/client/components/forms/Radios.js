@@ -6,27 +6,31 @@ const Radios = ({
   options,
   inline,
   value,
+  name,
   handleChange,
 }) => (
   <div className="form-group">
-    {label && (<label>{ label }</label>)}
-    {
-      options.map(option => (
-        <div className={inline ? 'form-check form-check-inline' : 'form-check'} key={`radios-select-${option}`}>
-          <label>
-            <input
-              className="form-check-input"
-              name="radius"
-              type="radio"
-              value={option}
-              checked={value === option}
-              onChange={handleChange}
-            />
-            {option}
-          </label>
-        </div>
-      ))
-    }
+    {label && (<label htmlFor={name}>{label}</label>)}
+    {options.map(option => (
+      <div
+        className={inline ? 'form-check form-check-inline' : 'form-check'}
+        key={`radios-select-${option}`}
+        id={name}
+      >
+        <label htmlFor={option}>
+          <input
+            className="form-check-input"
+            name="radius"
+            type="radio"
+            value={option}
+            id={option}
+            checked={value === option}
+            onChange={handleChange}
+          />
+          {option}
+        </label>
+      </div>
+    ))}
   </div>
 );
 
@@ -36,9 +40,10 @@ Radios.defaultProps = {
 };
 
 Radios.propTypes = {
+  name: PropTypes.string.isRequired,
   value: PropTypes.string.isRequired,
   label: PropTypes.string,
-  options: PropTypes.array.isRequired,
+  options: PropTypes.array.isRequired, // eslint-disable-line
   inline: PropTypes.bool,
   handleChange: PropTypes.func.isRequired,
 };

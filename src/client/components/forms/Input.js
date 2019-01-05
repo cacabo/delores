@@ -12,7 +12,7 @@ const Input = ({
 }) => (
   <div className="form-group">
     {label && (
-      <label>
+      <label htmlFor={id || name}>
         { label }
       </label>
     )}
@@ -23,7 +23,8 @@ const Input = ({
       type={type}
       placeholder={placeholder}
       onChange={handleChange}
-      id={id} />
+      id={id || name}
+    />
   </div>
 );
 

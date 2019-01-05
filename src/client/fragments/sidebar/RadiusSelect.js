@@ -43,6 +43,7 @@ class RadiusSelect extends Component {
       <div>
         <Radios
           label="Radius"
+          name="radius"
           options={options}
           value={radiusType}
           handleChange={this.handleChange}
@@ -56,6 +57,7 @@ class RadiusSelect extends Component {
             high={100}
             showBounds
             showValue
+            name="radius"
             value={radius}
             handleChange={this.handleChangeSlider}
           />

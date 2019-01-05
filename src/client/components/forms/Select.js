@@ -12,7 +12,7 @@ const Select = ({
 }) => (
   <div className="form-group">
     {label && (
-      <label>
+      <label htmlFor={name}>
         { label }
       </label>
     )}
@@ -22,7 +22,9 @@ const Select = ({
       placeholder={placeholder}
       type={type}
       name={name}
-      value={value}>
+      id={name}
+      value={value}
+    >
       {
         options.map(option => (
           <option key={option}>
@@ -34,12 +36,17 @@ const Select = ({
   </div>
 );
 
+Select.defaultProps = {
+  label: '',
+  placeholder: '',
+};
+
 Select.propTypes = {
   label: PropTypes.string,
   placeholder: PropTypes.string,
   value: PropTypes.node.isRequired,
   handleChange: PropTypes.func.isRequired,
-  options: PropTypes.array.isRequired,
+  options: PropTypes.array.isRequired, // eslint-disable-line
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
 };

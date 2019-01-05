@@ -1,4 +1,4 @@
-/* globals google */
+/* globals google, document */
 
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
@@ -29,19 +29,23 @@ class InputLocation extends Component {
   handlePlaceChange(autocomplete) {
     const place = autocomplete.getPlace();
 
-    if (!(
-      place &&
-      place.geometry &&
-      place.geometry.location &&
-      place.geometry.location.lat &&
-      place.geometry.location.lng)
-    ) return;
+    if (
+      !(
+        place
+        && place.geometry
+        && place.geometry.location
+        && place.geometry.location.lat
+        && place.geometry.location.lng
+      )
+    ) {
+      return;
+    }
 
     const lat = place.geometry.location.lat();
     const lng = place.geometry.location.lng();
-    const name = place.name;
-
-    this.props.callback({
+    const name = { place };
+    const { callback } = this.props;
+    callback({
       lat,
       lng,
       name,
@@ -61,15 +65,24 @@ class InputLocation extends Component {
   }
 
   render() {
+    const {
+      label,
+      value,
+      name,
+      type,
+      placeholder,
+      handleChange,
+    } = this.props;
+
     return (
       <Input
-        label={this.props.label}
-        value={this.props.value}
-        name={this.props.name}
-        type={this.props.type}
-        placeholder={this.props.placeholder}
-        handleChange={this.props.handleChange}
-        id={'location'}
+        label={label}
+        value={value}
+        name={name}
+        type={type}
+        placeholder={placeholder}
+        handleChange={handleChange}
+        id="location"
       />
     );
   }

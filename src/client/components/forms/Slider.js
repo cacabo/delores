@@ -9,6 +9,7 @@ const Slider = ({
   showValue,
   handleChange,
   label,
+  name,
 }) => {
   let mid;
   let diff;
@@ -20,11 +21,12 @@ const Slider = ({
 
   return (
     <div className="form-group">
-      {label && (<label>{label}</label>)}
+      {label && (<label htmlFor={name}>{label}</label>)}
       <div className="slider-container">
         {showBounds && (<span>{ low }</span>)}
         <div className="slider-wrapper">
           <input
+            id={name}
             type="range"
             min={low}
             max={high}
@@ -60,6 +62,7 @@ Slider.propTypes = {
   showBounds: PropTypes.bool,
   showValue: PropTypes.bool,
   label: PropTypes.string,
+  name: PropTypes.string.isRequired,
 };
 
 export default Slider;
