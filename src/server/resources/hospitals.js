@@ -1,35 +1,35 @@
-export default {
+module.exports = {
   ALCH: {
     name: "Children's of Alabama",
-    address: "1600 7th Ave. S. | Birmingham AL 35233",
-    state: "AL",
+    address: '1600 7th Ave. S. | Birmingham AL 35233',
+    state: 'AL',
     location: {
       lat: 33.5053682,
       lng: -86.80587120000001,
     },
   },
   ALUA: {
-    name: "University of Alabama Hospital",
-    address: "500 22nd Street South, Birmingham, AL 35233",
-    state: "AL",
+    name: 'University of Alabama Hospital',
+    address: '500 22nd Street South, Birmingham, AL 35233',
+    state: 'AL',
     location: {
       lat: 33.5085907,
       lng: -86.7985726,
     },
   },
   ALVA: {
-    name: "Birmingham VA Medical Center",
-    address: "700 South 19th Street Birmingham, AL 35233",
-    state: "AL",
+    name: 'Birmingham VA Medical Center',
+    address: '700 South 19th Street Birmingham, AL 35233',
+    state: 'AL',
     location: {
       lat: 33.5041206,
       lng: -86.80155489999999,
     },
   },
   ARBH: {
-    name: "Baptist Medical Center",
-    address: "9500 Kanis Road Hickingbotham Outpatient Center, Suite 310 Little Rock, AR 7220",
-    state: "AR",
+    name: 'Baptist Medical Center',
+    address: '9500 Kanis Road Hickingbotham Outpatient Center, Suite 310 Little Rock, AR 7220',
+    state: 'AR',
     location: {
       lat: 34.7445622,
       lng: -92.38145800000001,
@@ -38,16 +38,16 @@ export default {
   ARCH: {
     name: "Arkansas Children's Hospital",
     address: "1 Children's Way, Little Rock, AR 72202",
-    state: "AR",
+    state: 'AR',
     location: {
       lat: 34.7429496,
       lng: -92.29296850000003,
     },
   },
   ARUA: {
-    name: "UAMS Medical Center University of Arkansas for Medical Sciences",
-    address: "4301 W. Markham St. Little Rock, AR 72205",
-    state: "AR",
+    name: 'UAMS Medical Center University of Arkansas for Medical Sciences',
+    address: '4301 W. Markham St. Little Rock, AR 72205',
+    state: 'AR',
     location: {
       lat: 34.7486214,
       lng: -92.320853,
@@ -55,26 +55,26 @@ export default {
   },
   AZCH: {
     name: "Phoenix Children's Hospital",
-    address: "1919 E. Thomas Rd., Phoenix, AZ 85016",
-    state: "AZ",
+    address: '1919 E. Thomas Rd., Phoenix, AZ 85016',
+    state: 'AZ',
     location: {
       lat: 92.320853,
       lng: -112.03999870000001,
     },
   },
   AZGS: {
-    name: "Banner-University Medical Center Phoenix",
-    address: "1111 E McDowell Rd, Phoenix, AZ 85006",
-    state: "AZ",
+    name: 'Banner-University Medical Center Phoenix',
+    address: '1111 E McDowell Rd, Phoenix, AZ 85006',
+    state: 'AZ',
     location: {
       lat: 33.4649674,
       lng: -112.05788359999997,
     },
   },
   AZMC: {
-    name: "Mayo Clinic Hospital",
-    address: "5777 East Mayo Boulevard Phoenix, AZ 85054",
-    state: "AZ",
+    name: 'Mayo Clinic Hospital',
+    address: '5777 East Mayo Boulevard Phoenix, AZ 85054',
+    state: 'AZ',
     location: {
       lat: 33.6590516,
       lng: -111.95644979999997,
@@ -82,107 +82,107 @@ export default {
   },
   AZSJ: {
     name: "St. Joseph's Hospital and Medical Center",
-    address: "350 W. Thomas Rd. Phoenix, AZ, 85013",
-    state: "AZ",
+    address: '350 W. Thomas Rd. Phoenix, AZ, 85013',
+    state: 'AZ',
     location: {
       lat: 33.4811303,
       lng: -112.07943410000001,
     },
   },
   AZUA: {
-    name: "Banner University Medical Center-Tucson",
-    address: "1501 N Campbell Ave, Tucson, AZ 85724",
-    state: "AZ",
+    name: 'Banner University Medical Center-Tucson',
+    address: '1501 N Campbell Ave, Tucson, AZ 85724',
+    state: 'AZ',
     location: {
       lat: 32.2410854,
       lng: -110.94628599999999,
     },
   },
   CAHP: {
-    name: "City of Hope National Medical Center",
-    address: "1500 East Duarte Road Duarte, CA 91010",
-    state: "CA",
+    name: 'City of Hope National Medical Center',
+    address: '1500 East Duarte Road Duarte, CA 91010',
+    state: 'CA',
     location: {
       lat: 34.1308315,
       lng: -117.97225889999999,
     },
   },
   CAGH: {
-    name: "Scripps Green Hospital",
-    address: "10666 N. Torrey Pines Rd. La Jolla, CA 92037",
-    state: "CA",
+    name: 'Scripps Green Hospital',
+    address: '10666 N. Torrey Pines Rd. La Jolla, CA 92037',
+    state: 'CA',
     location: {
       lat: 32.8966953,
       lng: -117.24273599999998,
-    }
+    },
   },
   CALL: {
-    name: "Loma Linda University Medical Center",
-    address: "11234 Anderson St. Loma Linda, CA 92354",
-    state: "CA",
+    name: 'Loma Linda University Medical Center',
+    address: '11234 Anderson St. Loma Linda, CA 92354',
+    state: 'CA',
     location: {
       lat: 34.04945190000001,
       lng: -117.2641774,
     },
   },
   CACL: {
-    name: "Childrens Hospital Los Angeles",
-    address: "4650 Sunset Blvd. Los Angeles, CA 90027",
-    state: "CA",
+    name: 'Childrens Hospital Los Angeles',
+    address: '4650 Sunset Blvd. Los Angeles, CA 90027',
+    state: 'CA',
     location: {
       lat: 34.09760680000001,
       lng: -118.2910238,
-    }
+    },
   },
   CACS: {
-    name: "Cedars-Sinai Medical Center",
-    address: "8700 Beverly Blvd., Los Angeles, CA 90048",
-    state: "CA",
+    name: 'Cedars-Sinai Medical Center',
+    address: '8700 Beverly Blvd., Los Angeles, CA 90048',
+    state: 'CA',
     location: {
       lat: 34.075232,
       lng: -118.38017560000003,
     },
   },
   CASV: {
-    name: "St. Vincent Medical Center",
-    address: "2131 West Third Street, Los Angeles, CA 90057",
-    state: "CA",
+    name: 'St. Vincent Medical Center',
+    address: '2131 West Third Street, Los Angeles, CA 90057',
+    state: 'CA',
     location: {
       lat: 34.063823,
       lng: -118.27353800000003,
     },
   },
   CAUC: {
-    name: "University of California at Los Angeles Medical Center",
-    address: "200 UCLA Medical Plaza Los Angeles, CA 90095",
-    state: "CA",
+    name: 'University of California at Los Angeles Medical Center',
+    address: '200 UCLA Medical Plaza Los Angeles, CA 90095',
+    state: 'CA',
     location: {
       lat: 34.0664086,
       lng: -118.44633329999999,
-    }
+    },
   },
   CAUH: {
-    name: "Keck Hospital of USC",
-    address: "1510 San Pablo St, Suite 200 Los Angeles, CA 90033",
-    state: "CA",
+    name: 'Keck Hospital of USC',
+    address: '1510 San Pablo St, Suite 200 Los Angeles, CA 90033',
+    state: 'CA',
     location: {
       lat: 34.0623826,
       lng: -118.20199389999999,
     },
   },
   CAIM: {
-    name: "University of California Irvine Medical Center",
-    address: "101 The City Drive South Orange, CA 92868",
-    state: "CA",
+    name: 'University of California Irvine Medical Center',
+    address: '101 The City Drive South Orange, CA 92868',
+    state: 'CA',
     location: {
       lat: 33.787716,
       lng: -117.88972209999997,
     },
   },
   CASJ: {
-    name: "Saint Joseph Hospital",
-    address: "1100 West Stewart Dr, Orange, CA 92868",
-    state: "CA",
+    name: 'Saint Joseph Hospital',
+    address: '1100 West Stewart Dr, Orange, CA 92868',
+    state: 'CA',
     location: {
       lat: 33.7820441,
       lng: -117.86542450000002,
@@ -190,107 +190,107 @@ export default {
   },
   CAPC: {
     name: "Lucile Salter Packard Children's Hospital at Stanford",
-    address: "725 Welch Rd, Palo Alto, CA 94304",
-    state: "CA",
+    address: '725 Welch Rd, Palo Alto, CA 94304',
+    state: 'CA',
     location: {
       lat: 37.4355499,
       lng: -122.1746382,
     },
   },
   CARC: {
-    name: "Riverside Community Hospital",
-    address: "4445 Magnolia Ave Riverside, CA 92501",
-    state: "CA",
+    name: 'Riverside Community Hospital',
+    address: '4445 Magnolia Ave Riverside, CA 92501',
+    state: 'CA',
     location: {
       lat: 33.9772213,
       lng: -117.38156939999999,
-    }
+    },
   },
   CASG: {
-    name: "Sutter Meidcal Center Sacramento",
-    address: "2825 Capitol Avenue Sacramento, CA 95816",
-    state: "CA",
+    name: 'Sutter Meidcal Center Sacramento',
+    address: '2825 Capitol Avenue Sacramento, CA 95816',
+    state: 'CA',
     location: {
       lat: 38.5711299,
       lng: -121.46949489999997,
     },
   },
   CASM: {
-    name: "University of California Davis Medical Center",
-    address: "2315 Stockton Blvd.  Sacramento, CA 95817",
-    state: "CA",
+    name: 'University of California Davis Medical Center',
+    address: '2315 Stockton Blvd.  Sacramento, CA 95817',
+    state: 'CA',
     location: {
       lat: 38.5549492,
       lng: -121.45463440000003,
-    }
+    },
   },
   CASH: {
-    name: "Sharp Memorial Hospital",
-    address: "7901 Frost St, San Diego, CA 92123",
-    state: "CA",
+    name: 'Sharp Memorial Hospital',
+    address: '7901 Frost St, San Diego, CA 92123',
+    state: 'CA',
     location: {
       lat: 32.7996759,
       lng: -117.15460009999998,
-    }
+    },
   },
   CASD: {
-    name: "University of California San Diego Medical Center",
-    address: "200 West Arbor Dr. San Diego, CA 92103",
-    state: "CA",
+    name: 'University of California San Diego Medical Center',
+    address: '200 West Arbor Dr. San Diego, CA 92103',
+    state: 'CA',
     location: {
       lat: 32.7542698,
       lng: -117.166135,
-    }
+    },
   },
   CACH: {
     name: "Rady Children's Hospital and Health Center ",
     address: "3020 Children's Way, San Diego, CA 92123",
-    state: "CA",
+    state: 'CA',
     location: {
       lat: 32.7977575,
       lng: -117.151407,
     },
   },
   CAPM: {
-    name: "California Pacific Medical Center",
-    address: "2340 Clay StreetSan Francisco, CA 94115",
-    state: "CA",
+    name: 'California Pacific Medical Center',
+    address: '2340 Clay StreetSan Francisco, CA 94115',
+    state: 'CA',
     location: {
       lat: 37.791364,
       lng: -122.43199800000002,
     },
   },
   CAMB: {
-    name: "UCSF Medical Center at Mission Bay",
-    address: "1825, 1855 and 1975 Fourth St. San Francisco, CA 94158",
-    state: "CA",
+    name: 'UCSF Medical Center at Mission Bay',
+    address: '1825, 1855 and 1975 Fourth St. San Francisco, CA 94158',
+    state: 'CA',
     location: {
       lat: 37.7648549,
       lng: -122.39026969999998,
     },
   },
   CASF: {
-    name: "University of California San Francisco Medical Center",
-    address: "505 Parnassus Ave, San Francisco, CA 94143",
-    state: "CA",
+    name: 'University of California San Francisco Medical Center',
+    address: '505 Parnassus Ave, San Francisco, CA 94143',
+    state: 'CA',
     location: {
       lat: 37.7630895,
       lng: -122.45781440000002,
-    }
+    },
   },
   CASU: {
-    name: "Stanford Health Care",
-    address: "300 Pasteur Dr Suite A160, Stanford, CA 94305",
-    state: "CA",
+    name: 'Stanford Health Care',
+    address: '300 Pasteur Dr Suite A160, Stanford, CA 94305',
+    state: 'CA',
     location: {
       lat: 37.4330746,
       lng: -122.1750485,
     },
   },
   CALA: {
-    name: "Harbor UCLA Medical Center",
-    address: "1000 W Carson St, Torrance, CA 90509",
-    state: "CA",
+    name: 'Harbor UCLA Medical Center',
+    address: '1000 W Carson St, Torrance, CA 90509',
+    state: 'CA',
     location: {
       lat: 33.8307253,
       lng: -118.29184470000001,
@@ -298,26 +298,26 @@ export default {
   },
   COCH: {
     name: "Children's Hospital Colorado",
-    address: "13123 E 16th Ave, Aurora, CO 80045",
-    state: "CO",
+    address: '13123 E 16th Ave, Aurora, CO 80045',
+    state: 'CO',
     location: {
       lat: 39.7422495,
       lng: -104.8349311,
     },
   },
   COUC: {
-    name: "University of Colorado Hospital/Health Science Center",
-    address: "1207, 1620 N Gaylord St, Denver, CO 80206",
-    state: "CO",
+    name: 'University of Colorado Hospital/Health Science Center',
+    address: '1207, 1620 N Gaylord St, Denver, CO 80206',
+    state: 'CO',
     location: {
       lat: 39.7421021,
       lng: -104.96065249999998,
     },
   },
   COPM: {
-    name: "Centura Porter Adventist Hospital",
-    address: "2525 S Downing St Denver, Colorado 80210",
-    state: "CO",
+    name: 'Centura Porter Adventist Hospital',
+    address: '2525 S Downing St Denver, Colorado 80210',
+    state: 'CO',
     location: {
       lat: 39.6700386,
       lng: -104.97481949999997,
@@ -325,26 +325,26 @@ export default {
   },
   COSL: {
     name: "Presbyterian/St Luke's Medical Center",
-    address: "1719 East 19th Ave. Denver, CO 80218",
-    state: "CO",
+    address: '1719 East 19th Ave. Denver, CO 80218',
+    state: 'CO',
     location: {
       lat: 39.74704759999999,
       lng: -104.96651689999999,
     },
   },
   CTHH: {
-    name: "Hartford Hospital",
-    address: "80 Seymour Street Hartford, CT 06102",
-    state: "CT",
+    name: 'Hartford Hospital',
+    address: '80 Seymour Street Hartford, CT 06102',
+    state: 'CT',
     location: {
       lat: 41.7541227,
       lng: -72.67917929999999,
     },
   },
   CTYN: {
-    name: "Yale New Haven Hospital",
-    address: "20 York Street New Haven, CT 06510",
-    state: "CT",
+    name: 'Yale New Haven Hospital',
+    address: '20 York Street New Haven, CT 06510',
+    state: 'CT',
     location: {
       lat: 41.3044229,
       lng: -72.9355663,
@@ -352,101 +352,107 @@ export default {
   },
   DCCH: {
     name: "Children's National Medical Center",
-    address: "111 Michigan Avenue NW, Washington, D.C., 20010",
-    state: "DC",
+    address: '111 Michigan Avenue NW, Washington, D.C., 20010',
+    state: 'DC',
     location: {
       lat: 38.9271267,
       lng: -77.014524,
     },
   },
   DCGU: {
-    name: "Georgetown University Medical Center",
-    address: "4000 Reservoir Road, Suite 120, N.W., Washington D.C. 20057",
-    state: "DC",
+    name: 'Georgetown University Medical Center',
+    address: '4000 Reservoir Road, Suite 120, N.W., Washington D.C. 20057',
+    state: 'DC',
     location: {
       lat: 38.9118754,
       lng: -77.07837010000003,
     },
   },
   DCGW: {
-    name: "George Washington University Hospital",
-    address: "900 23rd St NW, Washington, DC 20037",
-    state: "DC",
+    name: 'George Washington University Hospital',
+    address: '900 23rd St NW, Washington, DC 20037',
+    state: 'DC',
     location: {
       lat: 38.901261,
       lng: -77.0507412,
     },
   },
   DCWH: {
-    name: "Washington Hospital Center",
-    address: "110 Irving Street, NW Washington, D.C., 20010",
-    state: "DC",
+    name: 'Washington Hospital Center',
+    address: '110 Irving Street, NW Washington, D.C., 20010',
+    state: 'DC',
     location: {
       lat: 38.92950039999999,
       lng: -77.0144985,
     },
   },
   DECC: {
-    name: "Christiana Care Health Services",
-    address: "4701 Ogletown-Stanton Road, Newark, DE 19713",
-    state: "DC",
+    name: 'Christiana Care Health Services',
+    address: '4701 Ogletown-Stanton Road, Newark, DE 19713',
+    state: 'DC',
     location: {
       lat: 39.6878474,
       lng: -75.6747186,
     },
   },
   DEAI: {
-    name: "Alfred I duPont Hospital for Children",
-    address: "1600 Rockland Road Wilmington, DE 19803",
-    state: "DC",
+    name: 'Alfred I duPont Hospital for Children',
+    address: '1600 Rockland Road Wilmington, DE 19803',
+    state: 'DC',
     location: {
       lat: 39.7793789,
       lng: -75.55529760000002,
     },
   },
   PALV: {
-    name: "Lehigh Valley Hospitals",
-    address: "1200 S Cedar Crest Blvd, Allentown, PA 18103",
+    name: 'Lehigh Valley Hospitals',
+    address: '1200 S Cedar Crest Blvd, Allentown, PA 18103',
+    state: 'PA',
     location: {
       lat: 40.5667105,
       lng: -75.52375519999998,
     },
   },
   PAGM: {
-    name: "Geisinger Medical Center",
-    address: "100 N. Academy Ave. Danville, PA 17822",
+    name: 'Geisinger Medical Center',
+    address: '100 N. Academy Ave. Danville, PA 17822',
+    state: 'PA',
     location: {
       lat: 40.9677777,
       lng: -76.60534719999998,
     },
   },
   PAPH: {
-    name: "UPMC Hamot",
-    address: "201 State St, Erie, PA 16550",
+    name: 'UPMC Hamot',
+    address: '201 State St, Erie, PA 16550',
+    state: 'PA',
     location: {
       lat: 42.134549,
       lng: -80.08649179999998,
     },
   },
   PAHH: {
-    name: "Pinnacle Health System at Harrisburg Hospital",
-    address: "201 State St, Erie, PA 16550",
+    name: 'Pinnacle Health System at Harrisburg Hospital',
+    address: '201 State St, Erie, PA 16550',
+    state: 'PA',
     location: {
       lat: 42.134549,
       lng: -80.08649179999998,
     },
   },
   PAHE: {
-    name: "Penn State Milton S Hershey Medical Center",
-    address: "500 University Dr, Hershey, PA 17033",
+    name: 'Penn State Milton S Hershey Medical Center',
+    address: '500 University Dr, Hershey, PA 17033',
+    state: 'PA',
     location: {
       lat: 40.2644142,
       lng: -76.67463169999996,
     },
   },
   PAHM: {
-    name: "Hahnemann University Hospital",
-    address: "230 N Broad St, Philadelphia, PA 19102",
+    name: 'Hahnemann University Hospital',
+    address: '230 N Broad St, Philadelphia, PA 19102',
+    state: 'PA',
     location: {
       lat: 39.9571806,
       lng: -75.16289840000002,
@@ -454,39 +460,44 @@ export default {
   },
   PASC: {
     name: "St. Christopher's Hospital for Children",
-    address: "160 E Erie Ave, Philadelphia, PA 19134",
+    address: '160 E Erie Ave, Philadelphia, PA 19134',
+    state: 'PA',
     location: {
       lat: 40.00699669999999,
       lng: -75.12455130000001,
     },
   },
   PATJ: {
-    name: "Thomas Jefferson University Hospital",
-    address: "132 S 10th St, Philadelphia, PA 19107",
+    name: 'Thomas Jefferson University Hospital',
+    address: '132 S 10th St, Philadelphia, PA 19107',
+    state: 'PA',
     location: {
       lat: 39.9490857,
       lng: -75.15736549999997,
     },
   },
   PATU: {
-    name: "Temple University Hospital",
-    address: "3401 N Broad St, Philadelphia, PA 19140",
+    name: 'Temple University Hospital',
+    address: '3401 N Broad St, Philadelphia, PA 19140',
+    state: 'PA',
     location: {
       lat: 40.0054237,
       lng: -75.15071979999999,
     },
   },
   PAUP: {
-    name: "Hospital of the University of Pennsylvania",
-    address: "3400 Spruce St, Philadelphia, PA 19104",
+    name: 'Hospital of the University of Pennsylvania',
+    address: '3400 Spruce St, Philadelphia, PA 19104',
+    state: 'PA',
     location: {
       lat: 39.950044,
       lng: -75.193131,
     },
   },
   PAAE: {
-    name: "Albert Einstein Medical Center",
-    address: "5501 Old York Road Philadelphia, PA 19141",
+    name: 'Albert Einstein Medical Center',
+    address: '5501 Old York Road Philadelphia, PA 19141',
+    state: 'PA',
     location: {
       lat: 40.0367216,
       lng: -75.14318229999998,
@@ -494,7 +505,8 @@ export default {
   },
   PACP: {
     name: "Children's Hospital of Philadelphia",
-    address: "3401 Civic Center Blvd, Philadelphia, PA 19104",
+    address: '3401 Civic Center Blvd, Philadelphia, PA 19104',
+    state: 'PA',
     location: {
       lat: 39.9487,
       lng: -75.19354570000002,
@@ -502,47 +514,53 @@ export default {
   },
   PACH: {
     name: "UPMC Children's Hospital of Pittsburgh",
-    address: "4401 Penn Ave, Pittsburgh, PA 15224",
+    address: '4401 Penn Ave, Pittsburgh, PA 15224',
+    state: 'PA',
     location: {
       lat: 40.466533,
       lng: -79.9532034,
     },
   },
   PAAG: {
-    name: "Allegheny General Hospital",
-    address: "320 East North Avenue Pittsburgh, PA 15212",
+    name: 'Allegheny General Hospital',
+    address: '320 East North Avenue Pittsburgh, PA 15212',
+    state: 'PA',
     location: {
       lat: 40.45659879999999,
       lng: -80.00282419999996,
     },
   },
   PAVA: {
-    name: "VA Pittsburgh Healthcare System",
-    address: "4100 Allequippa St, Pittsburgh, PA 15213",
+    name: 'VA Pittsburgh Healthcare System',
+    address: '4100 Allequippa St, Pittsburgh, PA 15213',
+    state: 'PA',
     location: {
       lat: 40.4462661,
       lng: -79.96080740000002,
     },
   },
   PAPT: {
-    name: "University of Pittsburgh Medical Center",
-    address: "200 Lothrop St, Pittsburgh, PA 15213",
+    name: 'University of Pittsburgh Medical Center',
+    address: '200 Lothrop St, Pittsburgh, PA 15213',
+    state: 'PA',
     location: {
       lat: 40.4425606,
       lng: -79.96098269999999,
     },
   },
   PACC: {
-    name: "Crozer-Chester Medical Center",
-    address: "1 Medical Center Blvd, Chester, PA 19013",
+    name: 'Crozer-Chester Medical Center',
+    address: '1 Medical Center Blvd, Chester, PA 19013',
+    state: 'PA',
     location: {
       lat: 39.8557631,
       lng: -75.36819149999997,
     },
   },
   PALH: {
-    name: "The Lankenau Hospital",
-    address: "100 Lancaster Ave, Wynnewood, PA 19096",
+    name: 'The Lankenau Hospital',
+    address: '100 Lancaster Ave, Wynnewood, PA 19096',
+    state: 'PA',
     location: {
       lat: 39.9885015,
       lng: -75.25734,

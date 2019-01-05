@@ -3,9 +3,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 
-// import hospitals from '../../assets/hospitals';
-const hospitals = {};
-
 const MILES_TO_METERS = 1609.34;
 const BLUE = '#3b78e7';
 
@@ -16,6 +13,8 @@ class Map extends Component {
     this.state = {
       map: null,
       marker: null,
+      pending: true,
+      error: '',
     };
 
     this.initMap = this.initMap.bind(this);
@@ -30,6 +29,8 @@ class Map extends Component {
 
   componentDidMount() {
     this.waitForGoogle();
+
+    // TODO pull hospital data
   }
 
   componentDidUpdate(prevProps) {

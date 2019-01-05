@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+
 import { toggleSidebar } from '../../actions/sidebarActions';
 import NavLinks from './NavLinks';
 
@@ -11,9 +13,11 @@ class Nav extends Component { // eslint-disable-line
     return (
       <div id="nav-wrapper">
         <nav id="nav">
-          <h4 className="title">
-            Delores
-          </h4>
+          <Link to="/" style={{ color: '#fff' }}>
+            <h4 className="title">
+              Delores
+            </h4>
+          </Link>
 
           <div
             id="toggle"
