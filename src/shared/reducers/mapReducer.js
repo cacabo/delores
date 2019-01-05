@@ -5,9 +5,9 @@ import {
 } from '../actions/actionTypes';
 
 const mapReducer = (state = initialState.mapState, action) => {
-  let newState = Object.assign({}, state);
+  const newState = Object.assign({}, state);
 
-  switch(action.type) {
+  switch (action.type) {
     case CHANGE_RADIUS_TYPE:
       newState.radiusType = action.radiusType;
       return newState;

@@ -4,7 +4,7 @@ import { TOGGLE_SIDEBAR } from '../actions/actionTypes';
 const sidebarReducer = (state = initialState.sidebarState, action) => {
   let newState;
 
-  switch(action.type) {
+  switch (action.type) {
     case TOGGLE_SIDEBAR:
       newState = Object.assign({}, state);
       newState.active = !newState.active;

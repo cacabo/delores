@@ -16,4 +16,8 @@ export default {
   sidebarState: {
     active: false,
   },
+  hospitalsState: {
+    pending: true,
+    hospitals: null,
+  },
 };
