@@ -24,6 +24,11 @@ const TableBody = s.tbody`
   font-size: 80%;
 `;
 
+const Container = s.div`
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+`;
+
 // TODO split into more components
 
 class HospitalsClass extends Component {
@@ -42,18 +47,18 @@ class HospitalsClass extends Component {
     // TODO LOADING COMPONENT
     if (pending) {
       return (
-        <div>
+        <Container className="container">
           <p>Loading...</p>
-        </div>
+        </Container>
       );
     }
 
     // TODO ERROR MESSAGE
     if (error) {
       return (
-        <div>
+        <Container className="container">
           <p>{error}</p>
-        </div>
+        </Container>
       );
     }
 

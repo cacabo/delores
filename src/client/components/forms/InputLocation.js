@@ -43,8 +43,9 @@ class InputLocation extends Component {
 
     const lat = place.geometry.location.lat();
     const lng = place.geometry.location.lng();
-    const name = { place };
+    const { name } = place;
     const { callback } = this.props;
+
     callback({
       lat,
       lng,
