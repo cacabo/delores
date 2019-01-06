@@ -29,7 +29,7 @@ app.use('/', frontendRouter(DB));
 
 // Seed data on server start
 // TODO have other scripts to do this
-require('./database/seedHospitals');
+// require('./database/seedHospitals');
 
 app.listen(PORT, () => {
   console.log(`Listening on port ${PORT}`); // eslint-disable-line no-console
