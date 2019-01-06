@@ -1,8 +1,28 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
+import s from 'styled-components';
 
 import { getHospitals } from '../actions/hospitalActions';
+import { BLUE, WHITE } from '../constants/colors';
+
+const Table = s.table`
+  border-top: 0;
+`;
+
+const TableHead = s.thead`
+  background: ${BLUE};
+  color: ${WHITE};
+  font-size: 80%;
+
+  th {
+    font-weight: normal;
+  }
+`;
+
+const TableBody = s.tbody`
+  font-size: 80%;
+`;
 
 // TODO split into more components
 
@@ -38,8 +58,8 @@ class HospitalsClass extends Component {
     }
 
     return (
-      <table className="table">
-        <thead>
+      <Table className="table">
+        <TableHead>
           <tr>
             <th scope="col">#</th>
             <th scope="col">Code</th>
@@ -49,9 +69,9 @@ class HospitalsClass extends Component {
             <th scope="col">Long</th>
             <th scope="col">Lat</th>
           </tr>
-        </thead>
+        </TableHead>
 
-        <tbody>
+        <TableBody>
           {hospitals.map(({
             name,
             code,
@@ -72,8 +92,8 @@ class HospitalsClass extends Component {
               </tr>
             );
           })}
-        </tbody>
-      </table>
+        </TableBody>
+      </Table>
     );
   }
 }

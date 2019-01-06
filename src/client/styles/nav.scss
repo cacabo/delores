@@ -20,6 +20,7 @@
   from {
     opacity: 0;
   }
+
   to {
     opacity: 1;
   }
@@ -54,39 +55,12 @@
   color: white;
   border-bottom: 0;
   padding: 0.6rem 1rem;
-  box-shadow: 0rem 0.1rem 0.3rem $shade;
   display: flex;
 
   h4 {
     margin-bottom: 0;
     width: auto;
     display: inline-block;
-  }
-
-  .links {
-    padding-top: 0.1rem;
-    margin-left: auto;
-    width: auto;
-    display: inline-block;
-
-    a {
-      color: white;
-      opacity: 0.8;
-      margin-left: 1rem;
-      text-decoration: none;
-
-      &:visited {
-        opacity: 0.8;
-        text-decoration: none;
-      }
-
-      &:hover,
-      &:active,
-      &:focus {
-        opacity: 1;
-        text-decoration: none;
-      }
-    }
   }
 }
 
@@ -100,9 +74,9 @@
   z-index: 1001;
   top: 1rem;
 
-  &:hover,
+  &:active,
   &:focus,
-  &:active {
+  &:hover {
     span {
       background: white;
     }
@@ -170,7 +144,6 @@
     right: 100%;
     border-right: 1px solid $border;
     transition: all 0.2s ease;
-    box-shadow: 0rem 0.2rem 0.3rem $shadow;
 
     &.active {
       right: 25%;
