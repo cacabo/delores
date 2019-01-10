@@ -2,6 +2,7 @@ import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import Nav from './fragments/nav/Nav';
+import SessionModal from './fragments/SessionModal';
 import {
   Home,
   App,
@@ -29,5 +30,7 @@ export default () => (
       <Route exact path={RESULTS_PATH} component={Results} />
       <Route path={WILD_PATH} component={NotFound} />
     </Switch>
+
+    <SessionModal />
   </div>
 );

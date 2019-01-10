@@ -5,10 +5,6 @@ const bodyParser = require('body-parser');
 const frontendRouter = require('./routes/frontend');
 const hospitalsRouter = require('./routes/hospitals');
 
-// const eventsRouter = require('./routes/events');
-// const spacesRouter = require('./routes/spaces');
-// const diningRouter = require('./routes/dining');
-
 const DB = require('./database/db');
 
 const app = express();
@@ -21,9 +17,6 @@ app.use(express.static(path.join(__dirname, '..', '..', 'public')));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
-// app.use('/api/spaces', spacesRouter(DB));
-// app.use('/api/events', eventsRouter(DB));
-// app.use('/api/dining', diningRouter(DB));
 app.use('/api/hospitals', hospitalsRouter(DB));
 app.use('/', frontendRouter(DB));
 

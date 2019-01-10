@@ -20,4 +20,8 @@ export default {
     pending: true,
     hospitals: null,
   },
+  sessionState: {
+    loginModal: false,
+    registerModal: false,
+  },
 };
