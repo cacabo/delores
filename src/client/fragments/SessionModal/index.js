@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 
 import { closeSessionModal } from '../../actions/sessionActions';
 import { Modal, ModalContainer } from '../../components';
+import Login from './Login';
+import Register from './Register';
 
 const SessionModal = ({ loginModal, registerModal, dispatchCloseSessionModal }) => {
   const show = loginModal || registerModal;
@@ -11,7 +13,8 @@ const SessionModal = ({ loginModal, registerModal, dispatchCloseSessionModal }) 
   return (
     <Modal show={show} toggle={dispatchCloseSessionModal}>
       <ModalContainer>
-        <h1>nice modal</h1>
+        {loginModal && (<Login />)}
+        {registerModal && (<Register />)}
       </ModalContainer>
     </Modal>
   );

@@ -2,10 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import s from 'styled-components';
+import { WHITE } from '../constants/colors';
 
 const StyledLink = s(Link)`
   padding: 0.75rem 1rem;
   font-weight: bold;
+  color: ${WHITE} !important;
 `;
 
 export const Btn = ({ to, children }) => (

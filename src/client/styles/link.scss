@@ -1,0 +1,10 @@
+a,
+a:active,
+a:focus,
+a:hover,
+a:not([href]),
+a:not([href]):not([tabindex]),
+a:not([tabindex]),
+a:visited {
+  color: $primary;
+}
