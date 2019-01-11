@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Radios = ({
+export const Radios = ({
   label,
   options,
   inline,
@@ -47,5 +47,3 @@ Radios.propTypes = {
   inline: PropTypes.bool,
   handleChange: PropTypes.func.isRequired,
 };
-
-export default Radios;

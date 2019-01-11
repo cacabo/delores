@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 
 import { changeLocation } from '../../actions/locationActions';
 
-import Input from '../../components/forms/Input';
-import InputLocation from '../../components/forms/InputLocation';
-import Select from '../../components/forms/Select';
+import { Input, InputLocation, Select } from '../../components/forms';
 import Footer from './Footer';
 import RadiusSelect from './RadiusSelect';
 

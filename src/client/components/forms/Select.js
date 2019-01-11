@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Select = ({
+export const Select = ({
   label,
   placeholder,
   value,
@@ -50,5 +50,3 @@ Select.propTypes = {
   name: PropTypes.string.isRequired,
   type: PropTypes.string.isRequired,
 };
-
-export default Select;

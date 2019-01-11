@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Slider = ({
+export const Slider = ({
   low = 0,
   high = 100,
   value,
@@ -64,5 +64,3 @@ Slider.propTypes = {
   label: PropTypes.string,
   name: PropTypes.string.isRequired,
 };
-
-export default Slider;

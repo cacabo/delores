@@ -7,8 +7,7 @@ import {
   changeRadius,
 } from '../../actions/mapActions';
 
-import Radios from '../../components/forms/Radios';
-import Slider from '../../components/forms/Slider';
+import { Radios, Slider } from '../../components/forms';
 
 const options = [
   'Local',
