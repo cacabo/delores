@@ -91,7 +91,7 @@ const ModalContent = styled.div`
   background: ${WHITE};
   animation-duration: ${ANIMATION_DURATION};
   box-sizing: border-box;
-  padding: 6vh 0;
+  padding: 10vh 0;
 
   ${({ show }) => getSizing(DESKTOP_WIDTH, show)}
 
@@ -174,7 +174,7 @@ Modal.propTypes = {
 };
 
 export const ModalContainer = styled.div`
-  padding: 0 8.33vw;
+  padding: 0 8vw;
   background: ${({ background }) => background || WHITE};
   padding-top: ${({ paddingTop }) => paddingTop || 0};
   padding-bottom: ${({ paddingBottom }) => paddingBottom || 0};
