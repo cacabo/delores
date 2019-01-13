@@ -1,27 +1,24 @@
 {
-  "name": "penncentral",
+  "name": "delores",
   "version": "1.0.0",
-  "description": "Application built to allow University of Pennsylvania students to access information and services on one platform.",
+  "description": "Website for Delores.",
   "main": "webpack.config.js",
   "scripts": {
     "start": "node src/server/index.js",
+    "nodemon": "nodemon src/server/index.js",
     "test": "mocha --reporter spec",
     "webpack": "webpack --watch",
-    "dev": "source env.sh && (yarn webpack &) && yarn start",
+    "dev": "source env.sh && (yarn webpack &) && yarn nodemon",
     "lint": "eslint ./src/**/",
     "lint-server": "eslint ./src/server",
     "lint-fix": "eslint ./src/**/ --fix"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/pennlabs/penncentral.git"
+    "url": "git+https://github.com/ccabo1/delores.git"
   },
   "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/pennlabs/penncentral/issues"
-  },
-  "homepage": "https://github.com/pennlabs/penncentral#readme",
   "dependencies": {
     "@babel/core": "^7.1.2",
     "@babel/preset-env": "^7.1.0",
@@ -34,9 +31,13 @@
     "bulma": "^0.6.1",
     "dotenv": "^4.0.0",
     "express": "^4.16.0",
+    "jsonwebtoken": "^8.4.0",
     "lodash": "^4.17.11",
     "moment": "^2.22.2",
     "mongoose": "^4.11.13",
+    "passport": "^0.4.0",
+    "passport-jwt": "^4.0.0",
+    "passport-local": "^1.0.0",
     "prop-types": "^15.6.2",
     "react": "^16.3.0",
     "react-dom": "^16.3.0",
