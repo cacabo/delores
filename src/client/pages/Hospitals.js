@@ -5,6 +5,7 @@ import s from 'styled-components';
 
 import { getHospitals } from '../actions/hospitalActions';
 import { BLUE, WHITE } from '../constants/colors';
+import { ErrorMessage } from '../components';
 
 const Table = s.table`
   border-top: 0;
@@ -33,8 +34,9 @@ const Container = s.div`
 
 class HospitalsClass extends Component {
   componentDidMount() {
+    const { token } = this.props;
     const { getHospitalsDispatch } = this.props;
-    getHospitalsDispatch();
+    getHospitalsDispatch(token);
   }
 
   render() {
@@ -53,11 +55,10 @@ class HospitalsClass extends Component {
       );
     }
 
-    // TODO ERROR MESSAGE
     if (error) {
       return (
         <Container className="container">
-          <p>{error}</p>
+          <ErrorMessage message={error} />
         </Container>
       );
     }
@@ -113,9 +114,12 @@ HospitalsClass.propTypes = {
   hospitals: PropTypes.array, // eslint-disable-line
   error: PropTypes.string,
   pending: PropTypes.bool.isRequired,
+  token: PropTypes.string.isRequired,
 };
 
-const mapStateToProps = ({ hospitalsState }) => hospitalsState;
+const mapStateToProps = ({ hospitalsState, userState }) => (
+  Object.assign({}, hospitalsState, { token: userState.token })
+);
 
 const mapDispatchToProps = dispatch => ({
   getHospitalsDispatch: () => dispatch(getHospitals()),

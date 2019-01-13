@@ -28,8 +28,10 @@ passport.use(new LocalStrategy({
 passport.use(new JWTStrategy({
   jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
   secretOrKey: JWT_SECRET,
-}, (jwtPayload, cb) => (
-  DB.findUserById(jwtPayload.id)
+}, (jwtPayload, cb) => {
+  console.log('payload', jwtPayload); // eslint-disable-line
+
+  return DB.findUserById(jwtPayload._id)
     .then(user => cb(null, user))
-    .catch(err => cb(err))
-)));
+    .catch(err => cb(err));
+}));

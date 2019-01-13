@@ -50,10 +50,12 @@ const NavLinks = ({
 }) => (
   <Links>
     <StyledLink to={HOME_PATH}>Home</StyledLink>
-    <StyledLink to={APP_PATH}>App</StyledLink>
-    <StyledLink to={HOSPITALS_PATH}>Hospitals</StyledLink>
     {(token) ? (
-      <StyledSpan onClick={dispatchLogoutUser}>Logout</StyledSpan>
+      <>
+        <StyledLink to={APP_PATH}>App</StyledLink>
+        <StyledLink to={HOSPITALS_PATH}>Hospitals</StyledLink>
+        <StyledSpan onClick={dispatchLogoutUser}>Logout</StyledSpan>
+      </>
     ) : (
       <>
         <StyledSpan onClick={dispatchLoginSessionModal}>Login</StyledSpan>

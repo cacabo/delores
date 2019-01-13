@@ -6,25 +6,26 @@ import {
   GET_HOSPITALS_REQUESTED,
 } from './actionTypes';
 
-export function getHospitals() {
+export function getHospitals(token) {
   return async (dispatch) => {
     dispatch({
       type: GET_HOSPITALS_REQUESTED,
     });
 
-    try {
-      axios.get('/api/hospitals')
-        .then((res) => {
-          dispatch({
-            type: GET_HOSPITALS_FULFILLED,
-            hospitals: res.data.hospitals,
-          });
+    axios.get('/api/hospitals', {}, {
+      Authorization: `Bearer ${token}`,
+    })
+      .then((res) => {
+        dispatch({
+          type: GET_HOSPITALS_FULFILLED,
+          hospitals: res.data.hospitals,
         });
-    } catch (error) {
-      dispatch({
-        type: GET_HOSPITALS_REJECTED,
-        error: error.message || 'There was an error pulling studyspaces data',
+      })
+      .catch((error) => {
+        dispatch({
+          type: GET_HOSPITALS_REJECTED,
+          error: error.message || 'There was an error pulling studyspaces data',
+        });
       });
-    }
   };
 }

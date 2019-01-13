@@ -1,5 +1,9 @@
 import React from 'react';
+import { RowSpace } from '../components';
 
 export const NotFound = () => (
-  <p>The page you were looking for was not found</p>
+  <div className="container">
+    <RowSpace />
+    <p>The page you were looking for was not found</p>
+  </div>
 );
