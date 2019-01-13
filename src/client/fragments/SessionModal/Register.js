@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { loginSessionModal } from '../../actions/sessionActions';
+import { loginSessionModal, closeSessionModal } from '../../actions/sessionActions';
+import { registerUser } from '../../actions/userActions';
 import { Input } from '../../components/forms';
-import { Btn } from '../../components';
+import { Btn, Heading, ErrorMessage } from '../../components';
 
 class Register extends Component {
   constructor(props) {
@@ -21,6 +22,21 @@ class Register extends Component {
     this.isDisabled = this.isDisabled.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { user, token, pending } = this.props;
+
+    if (pending) return;
+
+    const prevUser = prevProps.user;
+    const prevToken = prevProps.token;
+
+    if (prevUser && prevToken) return;
+    if (!user || !token) return;
+
+    const { dispatchCloseSessionModal } = this.props;
+    dispatchCloseSessionModal();
   }
 
   isDisabled() {
@@ -64,12 +80,30 @@ class Register extends Component {
 
     if (this.isDisabled()) return;
 
-    console.log('Submitted'); // eslint-disable-line
-    console.log(this.state); // eslint-disable-line
+    const { dispatchRegisterUser } = this.props;
+    const {
+      email,
+      password,
+      firstName,
+      lastName,
+      confirmPassword,
+    } = this.state;
+
+    dispatchRegisterUser({
+      email,
+      password,
+      firstName,
+      lastName,
+      confirmPassword,
+    });
   }
 
   render() {
-    const { dispatchLoginSessionModal } = this.props;
+    const {
+      dispatchLoginSessionModal,
+      error,
+      pending,
+    } = this.props;
     const {
       firstName,
       lastName,
@@ -80,9 +114,11 @@ class Register extends Component {
 
     return (
       <>
-        <h2>Get started</h2>
+        <Heading>Get started</Heading>
 
         <form onSubmit={this.handleSubmit}>
+          <ErrorMessage message={error} />
+
           <Input
             label="First name"
             value={firstName}
@@ -128,7 +164,11 @@ class Register extends Component {
             handleChange={this.handleChange}
           />
 
-          <Btn input value="Register" disabled={this.isDisabled()} />
+          <Btn
+            input
+            value={pending ? 'Registering...' : 'Register'}
+            disabled={this.isDisabled() || pending}
+          />
         </form>
 
         <p>
@@ -142,14 +182,26 @@ class Register extends Component {
   }
 }
 
-Register.propTypes = {
-  dispatchLoginSessionModal: PropTypes.func.isRequired,
+Register.defaultProps = {
+  token: null,
+  user: null,
 };
 
-const mapStateToProps = () => ({});
+Register.propTypes = {
+  dispatchLoginSessionModal: PropTypes.func.isRequired,
+  dispatchCloseSessionModal: PropTypes.func.isRequired,
+  dispatchRegisterUser: PropTypes.func.isRequired,
+  token: PropTypes.string,
+  user: PropTypes.object, // eslint-disable-line
+  pending: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = ({ userState }) => (userState);
 
 const mapDispatchToProps = dispatch => ({
   dispatchLoginSessionModal: () => dispatch(loginSessionModal()),
+  dispatchCloseSessionModal: () => dispatch(closeSessionModal()),
+  dispatchRegisterUser: data => dispatch(registerUser(data)),
 });
 
 export default connect(

@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import { registerSessionModal, closeSessionModal } from '../../actions/sessionActions';
 import { loginUser } from '../../actions/userActions';
 import { Input } from '../../components/forms';
-import { Btn, ErrorMessage } from '../../components';
+import { Btn, ErrorMessage, Heading } from '../../components';
 
 class Login extends Component {
   constructor(props) {
@@ -56,10 +56,7 @@ class Login extends Component {
 
     if (this.isDisabled()) return;
 
-    console.log('Submitted'); // eslint-disable-line
-
     const { dispatchLoginUser } = this.props;
-
     const { email, password } = this.state;
 
     dispatchLoginUser({ email, password });
@@ -71,12 +68,11 @@ class Login extends Component {
       error,
       pending,
     } = this.props;
-
     const { email, password } = this.state;
 
     return (
       <>
-        <h2>Welcome back</h2>
+        <Heading>Welcome back</Heading>
 
         <form onSubmit={this.handleSubmit}>
           <ErrorMessage message={error} />
