@@ -10,7 +10,8 @@ function loginUser(req, res, user) {
       res.send(loginErr);
     }
 
-    const token = jwt.sign(user, JWT_SECRET);
+    // Note JWT expects a plain object, not a mongoose object -> copy fields
+    const token = jwt.sign(Object.assign({}, user), JWT_SECRET);
     return res.json({ user, token });
   });
 }
@@ -49,7 +50,7 @@ module.exports = function usersRouter(DB) {
     })
       .then(user => loginUser(req, res, user))
       .catch(err => res.status(400).json({
-        message: 'Something is not right' || err.message,
+        message: err.message || 'Something is not right',
       }));
   });
 
@@ -60,11 +61,14 @@ module.exports = function usersRouter(DB) {
       return res.status(400).send({ error: 'Missing email or password' });
     }
 
-    return passport.authenticate('local', { session: false }, (err, user) => {
-      if (err || !user) {
-        return res.status(400).json({
-          message: 'Incorrect email and password combination',
-        });
+    return passport.authenticate('local', { session: false }, (err, user, info) => {
+      if (err) {
+        return res.status(400).json({ message: err.message || 'Something went wrong.' });
+      }
+
+      if (!user) {
+        return res.status(400)
+          .json((info && info.message) ? info : { message: 'Something went wrong.' });
       }
 
       return loginUser(req, res, user);
