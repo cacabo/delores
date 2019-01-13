@@ -1,6 +1,7 @@
 import React from 'react';
 import { Route, Switch } from 'react-router-dom';
 
+import { PrivateRoute } from './components';
 import Nav from './fragments/nav/Nav';
 import SessionModal from './fragments/SessionModal';
 import {
@@ -25,9 +26,13 @@ export default () => (
 
     <Switch>
       <Route exact path={HOME_PATH} component={Home} />
-      <Route exact path={APP_PATH} component={App} />
-      <Route exact path={HOSPITALS_PATH} component={Hospitals} />
-      <Route exact path={RESULTS_PATH} component={Results} />
+
+      <PrivateRoute exact path={APP_PATH} component={App} />
+      <PrivateRoute exact path={HOSPITALS_PATH} component={Hospitals} />
+
+      {/* todo probably not needed */}
+      <PrivateRoute exact path={RESULTS_PATH} component={Results} />
+
       <Route path={WILD_PATH} component={NotFound} />
     </Switch>
 
