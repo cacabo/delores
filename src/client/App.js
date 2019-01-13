@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import { PrivateRoute } from './components';
@@ -19,23 +19,35 @@ import {
   RESULTS_PATH,
 } from './routes';
 
-export default () => (
-  <div id="app">
-    <Nav />
-    <div className="nav-spacer" />
+class Delores extends Component {
+  componentDidMount() {
+    console.log('mounted');
 
-    <Switch>
-      <Route exact path={HOME_PATH} component={Home} />
+    // TODO check for token and refresh state
+  }
 
-      <PrivateRoute exact path={APP_PATH} component={App} />
-      <PrivateRoute exact path={HOSPITALS_PATH} component={Hospitals} />
+  render() {
+    return (
+      <div id="app">
+        <Nav />
+        <div className="nav-spacer" />
 
-      {/* todo probably not needed */}
-      <PrivateRoute exact path={RESULTS_PATH} component={Results} />
+        <Switch>
+          <Route exact path={HOME_PATH} component={Home} />
 
-      <Route path={WILD_PATH} component={NotFound} />
-    </Switch>
+          <PrivateRoute exact path={APP_PATH} Component={App} />
+          <PrivateRoute exact path={HOSPITALS_PATH} Component={Hospitals} />
 
-    <SessionModal />
-  </div>
-);
+          {/* todo probably not needed */}
+          <PrivateRoute exact path={RESULTS_PATH} Component={Results} />
+
+          <Route path={WILD_PATH} component={NotFound} />
+        </Switch>
+
+        <SessionModal />
+      </div>
+    );
+  }
+}
+
+export default Delores;

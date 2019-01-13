@@ -1,3 +1,5 @@
+/* globals window */
+
 import initialState from './initialState';
 import {
   USER_LOGIN_REQUESTED,
@@ -7,7 +9,18 @@ import {
   USER_REGISTER_REJECTED,
   USER_REGISTER_FULFILLED,
   USER_LOGOUT,
+  USER_REHYDRATE,
 } from '../actions/actionTypes';
+
+const Store = window.localStorage;
+
+const clearToken = () => {
+  Store.removeItem('token');
+};
+
+const setToken = (token) => {
+  Store.setItem('token', token);
+};
 
 const userReducer = (state = initialState.userState, action) => {
   switch (action.type) {
@@ -15,15 +28,18 @@ const userReducer = (state = initialState.userState, action) => {
       return {
         pending: true,
         user: null,
+        token: null,
       };
 
     case USER_LOGIN_REJECTED:
+      clearToken();
       return {
         pending: false,
         error: action.error || 'There was an error logging you in.',
       };
 
     case USER_LOGIN_FULFILLED:
+      setToken(action.token);
       return {
         pending: false,
         user: action.user || {},
@@ -38,6 +54,7 @@ const userReducer = (state = initialState.userState, action) => {
       };
 
     case USER_REGISTER_REJECTED:
+      clearToken();
       return {
         pending: false,
         token: null,
@@ -45,6 +62,7 @@ const userReducer = (state = initialState.userState, action) => {
       };
 
     case USER_REGISTER_FULFILLED:
+      setToken(action.token);
       return {
         pending: false,
         token: action.token || {},
@@ -53,6 +71,9 @@ const userReducer = (state = initialState.userState, action) => {
 
     case USER_LOGOUT:
       return initialState.userState;
+
+    case USER_REHYDRATE:
+      return initialState.userState; // TODO
 
     default:
       return state;

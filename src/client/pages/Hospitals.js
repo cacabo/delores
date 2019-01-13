@@ -122,7 +122,7 @@ const mapStateToProps = ({ hospitalsState, userState }) => (
 );
 
 const mapDispatchToProps = dispatch => ({
-  getHospitalsDispatch: () => dispatch(getHospitals()),
+  getHospitalsDispatch: token => dispatch(getHospitals(token)),
 });
 
 // Redux config

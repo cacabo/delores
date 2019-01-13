@@ -1,3 +1,5 @@
+/* globals window */
+
 import axios from 'axios';
 
 import {
@@ -8,8 +10,11 @@ import {
   USER_REGISTER_REJECTED,
   USER_REGISTER_FULFILLED,
   USER_LOGOUT,
+  USER_REHYDRATE,
 } from './actionTypes';
 import { LOGIN_PATH, REGISTER_PATH } from '../routes';
+
+const Store = window.localStorage;
 
 export const logoutUser = () => ({ type: USER_LOGOUT });
 
@@ -69,4 +74,17 @@ export function loginUser({ email, password }) {
         });
       });
   };
+}
+
+export function rehydrate() {
+  const token = Store.getItem('token');
+
+  console.log('rehydrate token', token);
+
+  // TODO TODO
+
+  return ({
+    type: USER_REHYDRATE,
+    token,
+  });
 }

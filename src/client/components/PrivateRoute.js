@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 
 import NotFound from '../fragments/NotFound';
 
-const PrivateRouteComponent = ({ component, token, ...rest }) => (
+const PrivateRouteComponent = ({ Component, token, ...rest }) => (
   <Route
     {...rest}
-    render={props => (token ? (<component {...props} />) : (<NotFound />))}
+    render={props => (token ? (<Component {...props} />) : (<NotFound />))}
   />
 );
 

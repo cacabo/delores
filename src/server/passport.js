@@ -10,6 +10,7 @@ const DB = require('./database/db');
 
 const { JWT_SECRET } = process.env;
 
+// Strategy for logging in a user
 passport.use(new LocalStrategy({
   usernameField: 'email',
   passwordField: 'password',
@@ -25,13 +26,18 @@ passport.use(new LocalStrategy({
     .catch(err => cb(err))
 )));
 
+// Strategy for authenticating user activity
 passport.use(new JWTStrategy({
   jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
   secretOrKey: JWT_SECRET,
 }, (jwtPayload, cb) => {
   console.log('payload', jwtPayload); // eslint-disable-line
 
-  return DB.findUserById(jwtPayload._id)
-    .then(user => cb(null, user))
-    .catch(err => cb(err));
+  cb(null, jwtPayload._doc);
+
+  // const id = jwtPayload._doc && jwtPayload._doc._id;
+  // // TODO this request may not be needed
+  // return DB.findUserById(jwtPayload._id)
+  //   .then(user => cb(null, user))
+  //   .catch(err => cb(err));
 }));
