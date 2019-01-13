@@ -2,9 +2,10 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { registerSessionModal } from '../../actions/sessionActions';
+import { registerSessionModal, closeSessionModal } from '../../actions/sessionActions';
+import { loginUser } from '../../actions/userActions';
 import { Input } from '../../components/forms';
-import { Btn } from '../../components';
+import { Btn, ErrorMessage } from '../../components';
 
 class Login extends Component {
   constructor(props) {
@@ -18,6 +19,21 @@ class Login extends Component {
     this.isDisabled = this.isDisabled.bind(this);
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+  }
+
+  componentDidUpdate(prevProps) {
+    const { user, token, pending } = this.props;
+
+    if (pending) return;
+
+    const prevUser = prevProps.user;
+    const prevToken = prevProps.token;
+
+    if (prevUser && prevToken) return;
+    if (!user || !token) return;
+
+    const { dispatchCloseSessionModal } = this.props;
+    dispatchCloseSessionModal();
   }
 
   isDisabled() {
@@ -41,11 +57,21 @@ class Login extends Component {
     if (this.isDisabled()) return;
 
     console.log('Submitted'); // eslint-disable-line
-    console.log(this.state); // eslint-disable-line
+
+    const { dispatchLoginUser } = this.props;
+
+    const { email, password } = this.state;
+
+    dispatchLoginUser({ email, password });
   }
 
   render() {
-    const { dispatchRegisterSessionModal } = this.props;
+    const {
+      dispatchRegisterSessionModal,
+      error,
+      pending,
+    } = this.props;
+
     const { email, password } = this.state;
 
     return (
@@ -53,6 +79,8 @@ class Login extends Component {
         <h2>Welcome back</h2>
 
         <form onSubmit={this.handleSubmit}>
+          <ErrorMessage message={error} />
+
           <Input
             label="Email"
             value={email}
@@ -71,7 +99,11 @@ class Login extends Component {
             handleChange={this.handleChange}
           />
 
-          <Btn input value="Login" disabled={this.isDisabled()} />
+          <Btn
+            input
+            value={pending ? 'Logging in...' : 'Login'}
+            disabled={this.isDisabled() || pending}
+          />
         </form>
 
         <p>
@@ -85,14 +117,28 @@ class Login extends Component {
   }
 }
 
-Login.propTypes = {
-  dispatchRegisterSessionModal: PropTypes.func.isRequired,
+Login.defaultProps = {
+  error: '',
+  user: null,
+  token: null,
 };
 
-const mapStateToProps = () => ({});
+Login.propTypes = {
+  dispatchRegisterSessionModal: PropTypes.func.isRequired,
+  dispatchLoginUser: PropTypes.func.isRequired,
+  dispatchCloseSessionModal: PropTypes.func.isRequired,
+  pending: PropTypes.bool.isRequired,
+  error: PropTypes.string,
+  user: PropTypes.object, // eslint-disable-line
+  token: PropTypes.string,
+};
+
+const mapStateToProps = ({ userState }) => (userState);
 
 const mapDispatchToProps = dispatch => ({
   dispatchRegisterSessionModal: () => dispatch(registerSessionModal()),
+  dispatchCloseSessionModal: () => dispatch(closeSessionModal()),
+  dispatchLoginUser: data => dispatch(loginUser(data)),
 });
 
 export default connect(

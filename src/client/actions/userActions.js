@@ -9,10 +9,9 @@ import {
   USER_REGISTER_FULFILLED,
   USER_LOGOUT,
 } from './actionTypes';
+import { LOGIN_PATH, REGISTER_PATH } from '../routes';
 
-export function logoutUser() {
-  return USER_LOGOUT;
-}
+export const logoutUser = () => ({ type: USER_LOGOUT });
 
 export function registerUser({
   email,
@@ -26,27 +25,26 @@ export function registerUser({
       type: USER_REGISTER_REQUESTED,
     });
 
-    try {
-      axios.post('/api/users/login', {
-        email,
-        password,
-        firstName,
-        lastName,
-        confirmPassword,
-      })
-        .then((res) => {
-          dispatch({
-            type: USER_REGISTER_FULFILLED,
-            user: res.data.user,
-            token: res.data.token,
-          });
+    axios.post(REGISTER_PATH, {
+      email,
+      password,
+      firstName,
+      lastName,
+      confirmPassword,
+    })
+      .then((res) => {
+        dispatch({
+          type: USER_REGISTER_FULFILLED,
+          user: res.data.user,
+          token: res.data.token,
         });
-    } catch (error) {
-      dispatch({
-        type: USER_REGISTER_REJECTED,
-        error: error.message || 'There was an error registering you.',
+      })
+      .catch((error) => {
+        dispatch({
+          type: USER_REGISTER_REJECTED,
+          error: error.message || 'There was an error registering you.',
+        });
       });
-    }
   };
 }
 
@@ -56,20 +54,19 @@ export function loginUser({ email, password }) {
       type: USER_LOGIN_REQUESTED,
     });
 
-    try {
-      axios.post('/api/users/login', { email, password })
-        .then((res) => {
-          dispatch({
-            type: USER_LOGIN_FULFILLED,
-            user: res.data.user,
-            token: res.data.token,
-          });
+    axios.post(LOGIN_PATH, { email, password })
+      .then((res) => {
+        dispatch({
+          type: USER_LOGIN_FULFILLED,
+          user: res.data.user,
+          token: res.data.token,
         });
-    } catch (error) {
-      dispatch({
-        type: USER_LOGIN_REJECTED,
-        error: error.message || 'There was an error logging you in.',
+      })
+      .catch((error) => {
+        dispatch({
+          type: USER_LOGIN_REJECTED,
+          error: error.message || 'There was an error logging you in.',
+        });
       });
-    }
   };
 }

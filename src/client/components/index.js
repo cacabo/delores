@@ -1,3 +1,4 @@
 export * from './Btn';
 export * from './Modal';
-export * from './forms';
+export * from './Typography';
+export * from './Message';

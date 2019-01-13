@@ -7,5 +7,13 @@ export const GRAY = '#999';
 export const DARK_GRAY = '#CFD2D2';
 export const BLACK = '#000';
 
-// Colors
-export const BLUE = '#3B78E7';
+// Blues
+export const LIGHT_BLUE = '#A8DDF5';
+export const BLUE = '#3B77D8';
+export const DARK_BLUE = '#1F61CC';
+export const BLUE_BORDER = 'rgba(31, 97, 204, 0.25)';
+
+// Reds
+export const PINK = '#FFDBDB';
+export const RED = '#F57080';
+export const RED_BORDER = 'rgba(245, 112, 128, 0.25)';

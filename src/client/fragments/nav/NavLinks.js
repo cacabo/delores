@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { HOME_PATH, HOSPITALS_PATH, APP_PATH } from '../../routes';
 import { WHITE } from '../../constants/colors';
 import { loginSessionModal, registerSessionModal } from '../../actions/sessionActions';
+import { logoutUser } from '../../actions/userActions';
 
 const Links = s.div`
   padding-top: 0.1rem;
@@ -41,26 +42,44 @@ const StyledSpan = s.span`${styles}`;
 
 const StyledLink = s(Link)`${styles}`;
 
-const NavLinks = ({ dispatchLoginSessionModal, dispatchRegisterSessionModal }) => (
+const NavLinks = ({
+  dispatchLoginSessionModal,
+  dispatchRegisterSessionModal,
+  dispatchLogoutUser,
+  token,
+}) => (
   <Links>
     <StyledLink to={HOME_PATH}>Home</StyledLink>
     <StyledLink to={APP_PATH}>App</StyledLink>
     <StyledLink to={HOSPITALS_PATH}>Hospitals</StyledLink>
-    <StyledSpan onClick={dispatchLoginSessionModal}>Login</StyledSpan>
-    <StyledSpan onClick={dispatchRegisterSessionModal}>Register</StyledSpan>
+    {(token) ? (
+      <StyledSpan onClick={dispatchLogoutUser}>Logout</StyledSpan>
+    ) : (
+      <>
+        <StyledSpan onClick={dispatchLoginSessionModal}>Login</StyledSpan>
+        <StyledSpan onClick={dispatchRegisterSessionModal}>Register</StyledSpan>
+      </>
+    )}
   </Links>
 );
+
+NavLinks.defaultProps = {
+  token: '',
+};
 
 NavLinks.propTypes = {
   dispatchLoginSessionModal: PropTypes.func.isRequired,
   dispatchRegisterSessionModal: PropTypes.func.isRequired,
+  dispatchLogoutUser: PropTypes.func.isRequired,
+  token: PropTypes.string,
 };
 
-const mapStateToProps = () => ({});
+const mapStateToProps = ({ userState }) => (userState);
 
 const mapDispatchToProps = dispatch => ({
   dispatchLoginSessionModal: () => dispatch(loginSessionModal()),
   dispatchRegisterSessionModal: () => dispatch(registerSessionModal()),
+  dispatchLogoutUser: () => dispatch(logoutUser()),
 });
 
 export default connect(
