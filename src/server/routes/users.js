@@ -4,6 +4,17 @@ const passport = require('passport');
 
 const { JWT_SECRET } = process.env;
 
+function loginUser(req, res, user) {
+  return req.login(user, { session: false }, (loginErr) => {
+    if (loginErr) {
+      res.send(loginErr);
+    }
+
+    const token = jwt.sign(user, JWT_SECRET);
+    return res.json({ user, token });
+  });
+}
+
 module.exports = function usersRouter(DB) {
   router.post('/register', (req, res) => {
     const {
@@ -36,12 +47,10 @@ module.exports = function usersRouter(DB) {
       email,
       password,
     })
-      .then(user => res.status(200).json(user))
+      .then(user => loginUser(req, res, user))
       .catch(err => res.status(400).json({
         message: 'Something is not right' || err.message,
       }));
-
-    // TODO log in?
   });
 
   router.post('/login', (req, res) => {
@@ -58,15 +67,18 @@ module.exports = function usersRouter(DB) {
         });
       }
 
-      return req.login(user, { session: false }, (loginErr) => {
-        if (loginErr) {
-          res.send(loginErr);
-        }
-
-        const token = jwt.sign(user, JWT_SECRET);
-        return res.json({ user, token });
-      });
+      return loginUser(req, res, user);
     })(req, res);
+  });
+
+  router.get('/:id', (req, res) => {
+    const { id } = req.params;
+
+    DB.findUserById(id)
+      .then(user => res.status(200).json(user))
+      .catch(err => res.status(404).json({
+        message: err.message || 'User not found',
+      }));
   });
 
   return router;

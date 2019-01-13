@@ -22,7 +22,7 @@ function findUser({ email, password }) {
 }
 
 function findUserById(id) {
-  return User.findOneById(id);
+  return User.findById(id);
 }
 
 function findAllHospitals() {
