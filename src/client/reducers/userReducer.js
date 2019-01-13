@@ -9,7 +9,9 @@ import {
   USER_REGISTER_REJECTED,
   USER_REGISTER_FULFILLED,
   USER_LOGOUT,
-  USER_REHYDRATE,
+  USER_REHYDRATE_REQUESTED,
+  USER_REHYDRATE_REJECTED,
+  USER_REHYDRATE_FULFILLED,
 } from '../actions/actionTypes';
 
 const Store = window.localStorage;
@@ -72,8 +74,20 @@ const userReducer = (state = initialState.userState, action) => {
     case USER_LOGOUT:
       return initialState.userState;
 
-    case USER_REHYDRATE:
-      return initialState.userState; // TODO
+    case USER_REHYDRATE_REQUESTED:
+      return Object.assign({}, initialState.userState, { pending: true });
+
+    case USER_REHYDRATE_REJECTED:
+      clearToken();
+      return initialState.userState;
+
+    case USER_REHYDRATE_FULFILLED:
+      setToken(action.token);
+      return {
+        pending: false,
+        token: action.token || {},
+        user: action.user || {},
+      };
 
     default:
       return state;

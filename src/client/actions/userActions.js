@@ -10,9 +10,11 @@ import {
   USER_REGISTER_REJECTED,
   USER_REGISTER_FULFILLED,
   USER_LOGOUT,
-  USER_REHYDRATE,
+  USER_REHYDRATE_REQUESTED,
+  USER_REHYDRATE_REJECTED,
+  USER_REHYDRATE_FULFILLED,
 } from './actionTypes';
-import { LOGIN_PATH, REGISTER_PATH } from '../routes';
+import { LOGIN_PATH, REGISTER_PATH, REHYDRATE_PATH } from '../routes';
 
 const Store = window.localStorage;
 
@@ -79,12 +81,27 @@ export function loginUser({ email, password }) {
 export function rehydrate() {
   const token = Store.getItem('token');
 
-  console.log('rehydrate token', token);
+  if (!token) {
+    return ({ type: USER_REHYDRATE_REJECTED });
+  }
 
-  // TODO TODO
+  return async (dispatch) => {
+    dispatch({ type: USER_REHYDRATE_REQUESTED });
 
-  return ({
-    type: USER_REHYDRATE,
-    token,
-  });
+    const authStr = 'bearer '.concat(token);
+
+    axios.get(REHYDRATE_PATH, {
+      headers: { Authorization: authStr },
+    })
+      .then((res) => {
+        dispatch({
+          type: USER_REHYDRATE_FULFILLED,
+          user: res.data.user,
+          token,
+        });
+      })
+      .catch(() => {
+        dispatch({ type: USER_REHYDRATE_REJECTED });
+      });
+  };
 }

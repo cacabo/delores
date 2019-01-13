@@ -79,6 +79,16 @@ module.exports = function usersRouter(DB) {
     })(req, res);
   });
 
+  router.get('/rehydrate', (req, res) => (
+    passport.authenticate('jwt', { session: false }, (err, user) => {
+      if (err) {
+        return res.status(403).send({ message: err.message || 'Cannot rehydrate' });
+      }
+
+      return res.status(200).send(user);
+    })(req, res)
+  ));
+
   router.get('/:id', (req, res) => {
     const { id } = req.params;
 

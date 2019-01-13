@@ -15,8 +15,6 @@ export function getHospitals(token) {
 
     const authStr = 'bearer '.concat(token);
 
-    console.log('auth string', authStr);
-
     axios.get(GET_HOSPITALS_PATH, {
       headers: { Authorization: authStr },
     })
@@ -27,8 +25,6 @@ export function getHospitals(token) {
         });
       })
       .catch((error) => {
-        console.log(error);
-
         dispatch({
           type: GET_HOSPITALS_REJECTED,
           error: error.message || 'There was an error pulling hospitals data',

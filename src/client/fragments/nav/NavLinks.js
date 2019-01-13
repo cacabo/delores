@@ -47,23 +47,30 @@ const NavLinks = ({
   dispatchRegisterSessionModal,
   dispatchLogoutUser,
   token,
-}) => (
-  <Links>
-    <StyledLink to={HOME_PATH}>Home</StyledLink>
-    {(token) ? (
-      <>
-        <StyledLink to={APP_PATH}>App</StyledLink>
-        <StyledLink to={HOSPITALS_PATH}>Hospitals</StyledLink>
-        <StyledSpan onClick={dispatchLogoutUser}>Logout</StyledSpan>
-      </>
-    ) : (
-      <>
-        <StyledSpan onClick={dispatchLoginSessionModal}>Login</StyledSpan>
-        <StyledSpan onClick={dispatchRegisterSessionModal}>Register</StyledSpan>
-      </>
-    )}
-  </Links>
-);
+  pending,
+}) => {
+  if (pending) {
+    return null;
+  }
+
+  return (
+    <Links>
+      <StyledLink to={HOME_PATH}>Home</StyledLink>
+      {(token) ? (
+        <>
+          <StyledLink to={APP_PATH}>App</StyledLink>
+          <StyledLink to={HOSPITALS_PATH}>Hospitals</StyledLink>
+          <StyledSpan onClick={dispatchLogoutUser}>Logout</StyledSpan>
+        </>
+      ) : (
+        <>
+          <StyledSpan onClick={dispatchLoginSessionModal}>Login</StyledSpan>
+          <StyledSpan onClick={dispatchRegisterSessionModal}>Register</StyledSpan>
+        </>
+      )}
+    </Links>
+  );
+};
 
 NavLinks.defaultProps = {
   token: '',
@@ -74,6 +81,7 @@ NavLinks.propTypes = {
   dispatchRegisterSessionModal: PropTypes.func.isRequired,
   dispatchLogoutUser: PropTypes.func.isRequired,
   token: PropTypes.string,
+  pending: PropTypes.bool.isRequired,
 };
 
 const mapStateToProps = ({ userState }) => (userState);

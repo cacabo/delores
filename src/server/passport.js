@@ -31,8 +31,6 @@ passport.use(new JWTStrategy({
   jwtFromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
   secretOrKey: JWT_SECRET,
 }, (jwtPayload, cb) => {
-  console.log('payload', jwtPayload); // eslint-disable-line
-
   cb(null, jwtPayload._doc);
 
   // const id = jwtPayload._doc && jwtPayload._doc._id;
