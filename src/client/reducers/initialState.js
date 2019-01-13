@@ -24,4 +24,10 @@ export default {
     loginModal: false,
     registerModal: false,
   },
+  userState: {
+    error: '',
+    user: null,
+    pending: false,
+    token: null,
+  },
 };

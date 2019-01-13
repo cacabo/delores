@@ -5,6 +5,7 @@ import sidebarReducer from './sidebarReducer';
 import mapReducer from './mapReducer';
 import hospitalsReducer from './hospitalsReducer';
 import sessionReducer from './sessionReducer';
+import userReducer from './userReducer';
 
 const rootReducer = combineReducers({
   locationState: locationReducer,
@@ -12,6 +13,7 @@ const rootReducer = combineReducers({
   mapState: mapReducer,
   hospitalsState: hospitalsReducer,
   sessionState: sessionReducer,
+  userState: userReducer,
 });
 
 export default rootReducer;

@@ -11,7 +11,11 @@ function loginUser(req, res, user) {
     }
 
     // Note JWT expects a plain object, not a mongoose object -> copy fields
-    const token = jwt.sign(Object.assign({}, user), JWT_SECRET);
+    const token = jwt.sign(
+      Object.assign({}, user),
+      JWT_SECRET,
+      { expiresIn: '1w' },
+    );
     return res.json({ user, token });
   });
 }
